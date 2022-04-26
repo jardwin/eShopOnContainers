@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Microsoft.eShopOnContainers.Services.Catalog.API;
 
 public class Startup
@@ -131,7 +133,7 @@ public static class CustomExtensionMethods
 
         hcBuilder
             .AddCheck("self", () => HealthCheckResult.Healthy())
-            .AddSqlServer(
+            .AddMySql(
                 configuration["ConnectionString"],
                 name: "CatalogDB-check",
                 tags: new string[] { "catalogdb" });
@@ -171,8 +173,9 @@ public static class CustomExtensionMethods
         services.AddEntityFrameworkSqlServer()
             .AddDbContext<CatalogContext>(options =>
         {
-            options.UseSqlServer(configuration["ConnectionString"],
-                                    sqlServerOptionsAction: sqlOptions =>
+            options.UseMySql(configuration["ConnectionString"], ServerVersion.AutoDetect(configuration["ConnectionString"]),
+                
+                                    mySqlOptionsAction: sqlOptions =>
                                     {
                                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
@@ -182,12 +185,12 @@ public static class CustomExtensionMethods
 
         services.AddDbContext<IntegrationEventLogContext>(options =>
         {
-            options.UseSqlServer(configuration["ConnectionString"],
-                                    sqlServerOptionsAction: sqlOptions =>
+            options.UseMySql(configuration["ConnectionString"], ServerVersion.AutoDetect(configuration["ConnectionString"]),
+                                    mySqlOptionsAction: sqlOptions =>
                                     {
                                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
-                                        sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                                        //sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                                     });
         });
 

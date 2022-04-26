@@ -6,17 +6,17 @@ namespace Catalog.API.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateSequence(
-                name: "catalog_brand_hilo",
-                incrementBy: 10);
+            //migrationBuilder.CreateSequence(
+            //    name: "catalog_brand_hilo",
+            //    incrementBy: 10);
 
-            migrationBuilder.CreateSequence(
-                name: "catalog_hilo",
-                incrementBy: 10);
+            //migrationBuilder.CreateSequence(
+            //    name: "catalog_hilo",
+            //    incrementBy: 10);
 
-            migrationBuilder.CreateSequence(
-                name: "catalog_type_hilo",
-                incrementBy: 10);
+            //migrationBuilder.CreateSequence(
+            //    name: "catalog_type_hilo",
+            //    incrementBy: 10);
 
             migrationBuilder.CreateTable(
                 name: "catalogbrand",
