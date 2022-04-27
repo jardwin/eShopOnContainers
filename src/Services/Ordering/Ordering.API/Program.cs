@@ -78,6 +78,7 @@ IConfiguration GetConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddSystemsManager("/orderingapi")
         .AddEnvironmentVariables();
 
     var config = builder.Build();

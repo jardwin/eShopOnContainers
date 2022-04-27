@@ -11,25 +11,6 @@ namespace Ordering.API.Migrations
             migrationBuilder.EnsureSchema(
                 name: "ordering");
 
-            migrationBuilder.CreateSequence(
-                name: "orderitemseq",
-                incrementBy: 10);
-
-            migrationBuilder.CreateSequence(
-                name: "buyerseq",
-                schema: "ordering",
-                incrementBy: 10);
-
-            migrationBuilder.CreateSequence(
-                name: "orderseq",
-                schema: "ordering",
-                incrementBy: 10);
-
-            migrationBuilder.CreateSequence(
-                name: "paymentseq",
-                schema: "ordering",
-                incrementBy: 10);
-
             migrationBuilder.CreateTable(
                 name: "buyers",
                 schema: "ordering",

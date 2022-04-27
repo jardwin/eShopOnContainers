@@ -7,63 +7,63 @@ namespace Ordering.API.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_orders_address_AddressId",
-                schema: "ordering",
-                table: "orders");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_orders_address_AddressId",
+            //    schema: "ordering",
+            //    table: "orders");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_orders_paymentmethods_PaymentMethodId",
-                schema: "ordering",
-                table: "orders");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_orders_paymentmethods_PaymentMethodId",
+            //    schema: "ordering",
+            //    table: "orders");
 
-            migrationBuilder.DropTable(
-                name: "address",
-                schema: "ordering");
+            //migrationBuilder.DropTable(
+            //    name: "address",
+            //    schema: "ordering");
 
-            migrationBuilder.DropIndex(
-                name: "IX_orders_AddressId",
-                schema: "ordering",
-                table: "orders");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_orders_AddressId",
+            //    schema: "ordering",
+            //    table: "orders");
 
-            migrationBuilder.DropColumn(
-                name: "AddressId",
-                schema: "ordering",
-                table: "orders");
+            //migrationBuilder.DropColumn(
+            //    name: "AddressId",
+            //    schema: "ordering",
+            //    table: "orders");
 
             migrationBuilder.AddColumn<string>(
                 name: "Address_City",
                 schema: "ordering",
                 table: "orders",
-                type: "nvarchar(max)",
+                type: "LONGTEXT",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Address_Country",
                 schema: "ordering",
                 table: "orders",
-                type: "nvarchar(max)",
+                type: "LONGTEXT",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Address_State",
                 schema: "ordering",
                 table: "orders",
-                type: "nvarchar(max)",
+                type: "LONGTEXT",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Address_Street",
                 schema: "ordering",
                 table: "orders",
-                type: "nvarchar(max)",
+                type: "LONGTEXT",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Address_ZipCode",
                 schema: "ordering",
                 table: "orders",
-                type: "nvarchar(max)",
+                type: "LONGTEXT",
                 nullable: true);
 
         }

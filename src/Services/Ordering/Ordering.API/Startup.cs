@@ -1,3 +1,5 @@
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
 namespace Microsoft.eShopOnContainers.Services.Ordering.API;
 
 public class Startup
@@ -157,7 +159,7 @@ static class CustomExtensionsMethods
         hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy());
 
         hcBuilder
-            .AddSqlServer(
+            .AddMySql(
                 configuration["ConnectionString"],
                 name: "OrderingDB-check",
                 tags: new string[] { "orderingdb" });
@@ -187,11 +189,12 @@ static class CustomExtensionsMethods
     {
         services.AddDbContext<OrderingContext>(options =>
                 {
-                    options.UseSqlServer(configuration["ConnectionString"],
-                        sqlServerOptionsAction: sqlOptions =>
+                    options.UseMySql(configuration["ConnectionString"], ServerVersion.AutoDetect(configuration["ConnectionString"]),
+                        mySqlOptionsAction: sqlOptions =>
                         {
                             sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
                             sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                            sqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore);
                         });
                 },
                     ServiceLifetime.Scoped  //Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
@@ -199,13 +202,14 @@ static class CustomExtensionsMethods
 
         services.AddDbContext<IntegrationEventLogContext>(options =>
         {
-            options.UseSqlServer(configuration["ConnectionString"],
-                                    sqlServerOptionsAction: sqlOptions =>
-                                    {
-                                        sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
-                                        //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
-                                        sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-                                    });
+            options.UseMySql(configuration["ConnectionString"], ServerVersion.AutoDetect(configuration["ConnectionString"]),
+                       mySqlOptionsAction: sqlOptions =>
+                       {
+                           sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
+                           //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
+                           sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                           sqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore);
+                       });
         });
 
         return services;
@@ -214,7 +218,7 @@ static class CustomExtensionsMethods
     public static IServiceCollection AddCustomSwagger(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddSwaggerGen(options =>
-        {            
+        {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "eShopOnContainers - Ordering HTTP API",
