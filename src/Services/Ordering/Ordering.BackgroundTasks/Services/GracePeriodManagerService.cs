@@ -72,7 +72,7 @@ namespace Ordering.BackgroundTasks.Services
                         @"SELECT Id FROM orders 
                             WHERE TIMESTAMPDIFF(MINUTE, OrderDate, CURDATE()) >= @GracePeriodTime
                             AND OrderStatusId = 1",
-                        new { _settings.GracePeriodTime });
+                        new { _settings.GracePeriodTime }, commandTimeout: 60);
                 }
                 catch (MySqlException exception)
                 {
