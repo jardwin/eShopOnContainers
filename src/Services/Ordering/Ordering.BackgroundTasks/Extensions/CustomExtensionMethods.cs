@@ -21,7 +21,7 @@ namespace Ordering.BackgroundTasks.Extensions
 
             hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy());
 
-            hcBuilder.AddSqlServer(
+            hcBuilder.AddMySql(
                     configuration["ConnectionString"],
                     name: "OrderingTaskDB-check",
                     tags: new string[] { "orderingtaskdb" });

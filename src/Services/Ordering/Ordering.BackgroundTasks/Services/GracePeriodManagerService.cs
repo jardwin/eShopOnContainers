@@ -3,10 +3,10 @@ using Microsoft.eShopOnContainers.BuildingBlocks.EventBus.Abstractions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MySql.Data.MySqlClient;
 using Ordering.BackgroundTasks.Events;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -63,18 +63,18 @@ namespace Ordering.BackgroundTasks.Services
         {
             IEnumerable<int> orderIds = new List<int>();
 
-            using (var conn = new SqlConnection(_settings.ConnectionString))
+            using (var conn = new MySqlConnection(_settings.ConnectionString))
             {
                 try
                 {
                     conn.Open();
                     orderIds = conn.Query<int>(
-                        @"SELECT Id FROM [ordering].[orders] 
-                            WHERE DATEDIFF(minute, [OrderDate], GETDATE()) >= @GracePeriodTime
-                            AND [OrderStatusId] = 1",
+                        @"SELECT Id FROM orders 
+                            WHERE TIMESTAMPDIFF(MINUTE, OrderDate, CURDATE()) >= @GracePeriodTime
+                            AND OrderStatusId = 1",
                         new { _settings.GracePeriodTime });
                 }
-                catch (SqlException exception)
+                catch (MySqlException exception)
                 {
                     _logger.LogCritical(exception, "FATAL ERROR: Database connections could not be opened: {Message}", exception.Message);
                 }

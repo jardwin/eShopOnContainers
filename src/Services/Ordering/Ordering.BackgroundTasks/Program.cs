@@ -26,6 +26,7 @@ namespace Ordering.BackgroundTasks
                     builder.SetBasePath(Directory.GetCurrentDirectory());
                     builder.AddJsonFile("appsettings.json", optional: true);
                     builder.AddJsonFile($"appsettings.{host.HostingEnvironment.EnvironmentName}.json", optional: true);
+                    builder.AddSystemsManager("/orderingapi");
                     builder.AddEnvironmentVariables();
                     builder.AddCommandLine(args);
                 })
