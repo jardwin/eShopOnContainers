@@ -17,17 +17,16 @@ namespace Identity.API.Migrations.ConfigurationDb
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "6.0.0")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                ;
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -41,7 +40,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastAccessed")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -52,7 +51,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
@@ -66,8 +65,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("int");
@@ -88,8 +86,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("int");
@@ -115,8 +112,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("int");
@@ -157,8 +153,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ApiScopeId")
                         .HasColumnType("int");
@@ -179,21 +174,20 @@ namespace Identity.API.Migrations.ConfigurationDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime?>("Expiration")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -216,8 +210,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("AbsoluteRefreshTokenLifetime")
                         .HasColumnType("int");
@@ -277,7 +270,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -306,7 +299,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastAccessed")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("LogoUri")
                         .HasMaxLength(2000)
@@ -346,7 +339,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("UserCodeType")
                         .HasMaxLength(100)
@@ -368,7 +361,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -395,7 +388,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -417,7 +410,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -439,7 +432,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -461,7 +454,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -483,7 +476,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -510,7 +503,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -532,7 +525,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -554,20 +547,20 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
 
                     b.Property<DateTime?>("Expiration")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -591,7 +584,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("IdentityResourceId")
                         .HasColumnType("int");
@@ -613,10 +606,10 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -647,7 +640,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
@@ -662,7 +655,7 @@ namespace Identity.API.Migrations.ConfigurationDb
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        ;
 
                     b.Property<int>("IdentityResourceId")
                         .HasColumnType("int");

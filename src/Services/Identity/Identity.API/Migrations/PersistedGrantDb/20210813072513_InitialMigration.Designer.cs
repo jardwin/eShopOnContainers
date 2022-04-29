@@ -19,7 +19,7 @@ namespace Identity.API.Migrations.PersistedGrantDb
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "6.0.0")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                ;
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
                 {
@@ -33,7 +33,7 @@ namespace Identity.API.Migrations.PersistedGrantDb
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Data")
                         .IsRequired()
@@ -47,7 +47,7 @@ namespace Identity.API.Migrations.PersistedGrantDb
 
                     b.Property<DateTime?>("Expiration")
                         .IsRequired()
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("SubjectId")
                         .HasMaxLength(200)
@@ -75,7 +75,7 @@ namespace Identity.API.Migrations.PersistedGrantDb
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Data")
                         .IsRequired()
@@ -83,7 +83,7 @@ namespace Identity.API.Migrations.PersistedGrantDb
                         .HasColumnType("LONGTEXT");
 
                     b.Property<DateTime?>("Expiration")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("SubjectId")
                         .HasMaxLength(200)

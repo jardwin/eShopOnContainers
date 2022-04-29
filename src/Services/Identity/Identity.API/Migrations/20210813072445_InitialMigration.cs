@@ -49,7 +49,7 @@ namespace Identity.API.Migrations
                     PhoneNumber = table.Column<string>(type: "LONGTEXT", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "TIMESTAMP", nullable: true),
                     LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
@@ -148,9 +148,9 @@ namespace Identity.API.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(250)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(250)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(250)", nullable: false),
                     Value = table.Column<string>(type: "LONGTEXT", nullable: true)
                 },
                 constraints: table =>
