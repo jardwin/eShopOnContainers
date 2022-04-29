@@ -18,8 +18,8 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
 
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["ConnectionString"],
-                    sqlServerOptionsAction: sqlOptions =>
+                    options.UseMySql(Configuration["ConnectionString"], ServerVersion.AutoDetect(Configuration["ConnectionString"]),
+                    mySqlOptionsAction: sqlOptions =>
                     {
                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
@@ -43,7 +43,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
 
             services.AddHealthChecks()
                 .AddCheck("self", () => HealthCheckResult.Healthy())
-                .AddSqlServer(Configuration["ConnectionString"],
+                .AddMySql(Configuration["ConnectionString"],
                     name: "IdentityDB-check",
                     tags: new string[] { "IdentityDB" });
 
@@ -64,8 +64,8 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
             .AddAspNetIdentity<ApplicationUser>()
             .AddConfigurationStore(options =>
             {
-                options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString,
-                    sqlServerOptionsAction: sqlOptions =>
+                options.ConfigureDbContext = builder => builder.UseMySql(connectionString, ServerVersion.AutoDetect(Configuration["ConnectionString"]),
+                    mySqlOptionsAction: sqlOptions =>
                     {
                         sqlOptions.MigrationsAssembly(migrationsAssembly);
                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
@@ -74,8 +74,8 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
             })
             .AddOperationalStore(options =>
             {
-                options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString,
-                    sqlServerOptionsAction: sqlOptions =>
+                options.ConfigureDbContext = builder => builder.UseMySql(connectionString, ServerVersion.AutoDetect(Configuration["ConnectionString"]),
+                    mySqlOptionsAction: sqlOptions =>
                     {
                         sqlOptions.MigrationsAssembly(migrationsAssembly);
                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 

@@ -13,7 +13,8 @@
             var optionsBuilder = new DbContextOptionsBuilder<ConfigurationDbContext>();
             var storeOptions = new ConfigurationStoreOptions();
 
-            optionsBuilder.UseSqlServer(config["ConnectionString"], sqlServerOptionsAction: o => o.MigrationsAssembly("Identity.API"));
+            optionsBuilder.UseMySql(config["ConnectionString"] , ServerVersion.AutoDetect(config["ConnectionString"]),
+                                    mySqlOptionsAction: o => o.MigrationsAssembly("Identity.API"));
 
             return new ConfigurationDbContext(optionsBuilder.Options, storeOptions);
         }

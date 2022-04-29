@@ -36,7 +36,7 @@ namespace Identity.API.Migrations.PersistedGrantDb
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasMaxLength(50000)
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("LONGTEXT");
 
                     b.Property<string>("DeviceCode")
                         .IsRequired()
@@ -78,7 +78,7 @@ namespace Identity.API.Migrations.PersistedGrantDb
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasMaxLength(50000)
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("LONGTEXT");
 
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime2");

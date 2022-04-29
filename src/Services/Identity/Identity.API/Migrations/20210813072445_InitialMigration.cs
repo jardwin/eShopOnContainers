@@ -14,7 +14,7 @@ namespace Identity.API.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ConcurrencyStamp = table.Column<string>(type: "LONGTEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,27 +26,27 @@ namespace Identity.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CardNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SecurityNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Expiration = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CardHolderName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CardNumber = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    SecurityNumber = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    Expiration = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    CardHolderName = table.Column<string>(type: "LONGTEXT", nullable: false),
                     CardType = table.Column<int>(type: "int", nullable: false),
-                    Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Street = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    City = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    State = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    Country = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    ZipCode = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    Name = table.Column<string>(type: "LONGTEXT", nullable: false),
+                    LastName = table.Column<string>(type: "LONGTEXT", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PasswordHash = table.Column<string>(type: "LONGTEXT", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "LONGTEXT", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "LONGTEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "LONGTEXT", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -65,8 +65,8 @@ namespace Identity.API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ClaimType = table.Column<string>(type: "LONGTEXT", nullable: true),
+                    ClaimValue = table.Column<string>(type: "LONGTEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,8 +86,8 @@ namespace Identity.API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ClaimType = table.Column<string>(type: "LONGTEXT", nullable: true),
+                    ClaimValue = table.Column<string>(type: "LONGTEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -106,7 +106,7 @@ namespace Identity.API.Migrations
                 {
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProviderDisplayName = table.Column<string>(type: "LONGTEXT", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -151,7 +151,7 @@ namespace Identity.API.Migrations
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Value = table.Column<string>(type: "LONGTEXT", nullable: true)
                 },
                 constraints: table =>
                 {
