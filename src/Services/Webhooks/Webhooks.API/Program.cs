@@ -9,6 +9,7 @@ IWebHostBuilder CreateWebHostBuilder(string[] args) =>
                 .ConfigureAppConfiguration((builderContext, config) =>
                 {
                     config.AddEnvironmentVariables();
+                    config.AddSystemsManager("/webhooksapi");
                 })
                 .ConfigureLogging((hostingContext, builder) =>
                 {

@@ -123,8 +123,8 @@ static class CustomExtensionMethods
         services.AddEntityFrameworkSqlServer()
             .AddDbContext<WebhooksContext>(options =>
         {
-            options.UseSqlServer(configuration["ConnectionString"],
-                                    sqlServerOptionsAction: sqlOptions =>
+            options.UseMySql(configuration["ConnectionString"], ServerVersion.AutoDetect(configuration["ConnectionString"]),
+                        mySqlOptionsAction: sqlOptions =>
                                     {
                                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
                                         //Configuring Connection Resiliency: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-resiliency 
@@ -222,7 +222,7 @@ static class CustomExtensionMethods
 
         hcBuilder
             .AddCheck("self", () => HealthCheckResult.Healthy())
-            .AddSqlServer(
+            .AddMySql(
                 configuration["ConnectionString"],
                 name: "WebhooksApiDb-check",
                 tags: new string[] { "webhooksdb" });
