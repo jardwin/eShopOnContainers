@@ -52,6 +52,7 @@ IConfiguration GetConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddSystemsManager("/paymentapi")
         .AddEnvironmentVariables();
 
     var config = builder.Build();
