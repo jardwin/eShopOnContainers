@@ -70,6 +70,7 @@ IConfiguration GetConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddSystemsManager("/basketapi")
         .AddEnvironmentVariables();
 
     var config = builder.Build();
