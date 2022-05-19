@@ -55,7 +55,7 @@ IConfiguration GetConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-        .AddSystemsManager("/webmvc")
+        //.AddSystemsManager("/webmvc")
         .AddEnvironmentVariables();
 
     return builder.Build();

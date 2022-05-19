@@ -171,6 +171,7 @@ static class ServiceCollectionExtensions
             options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.Authority = identityUrl.ToString();
             options.SignedOutRedirectUri = callBackUrl.ToString();
+            options.SignedOutCallbackPath= "";
             options.ClientId = "mvc";
             options.ClientSecret = "secret";
             options.ResponseType = "code id_token";

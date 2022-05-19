@@ -106,7 +106,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API.Configuration
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
-                        $"{clientsUrl["Mvc"]}/signout-callback-oidc"
+                        $"{clientsUrl["Mvc"]}/"
                     },
                     AllowedScopes = new List<string>
                     {

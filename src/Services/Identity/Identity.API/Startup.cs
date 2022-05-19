@@ -60,6 +60,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
                 x.Authentication.CookieLifetime = TimeSpan.FromHours(2);
             })
             .AddDevspacesIfNeeded(Configuration.GetValue("EnableDevspaces", false))
+            .AddDeveloperSigningCredential()
             .AddSigningCredential(Certificate.Get())
             .AddAspNetIdentity<ApplicationUser>()
             .AddConfigurationStore(options =>
