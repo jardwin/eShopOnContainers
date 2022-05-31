@@ -70,7 +70,7 @@ IConfiguration GetConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-        .AddSystemsManager("/basketapi")
+        //.AddSystemsManager("/basketapi")
         .AddEnvironmentVariables();
 
     var config = builder.Build();
@@ -89,8 +89,8 @@ IConfiguration GetConfiguration()
 
 (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
 {
-    var grpcPort = config.GetValue("GRPC_PORT", 81);
-    var port = config.GetValue("PORT", 80);
+    var grpcPort = config.GetValue("GRPC_PORT", 82);
+    var port = config.GetValue("PORT", 5103);
     return (port, grpcPort);
 }
 

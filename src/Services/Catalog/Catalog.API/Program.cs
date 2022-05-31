@@ -74,7 +74,7 @@ Serilog.ILogger CreateSerilogLogger(IConfiguration configuration)
 (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
 {
     var grpcPort = config.GetValue("GRPC_PORT", 81);
-    var port = config.GetValue("PORT", 80);
+    var port = config.GetValue("PORT", 5101);
     return (port, grpcPort);
 }
 
@@ -83,7 +83,7 @@ IConfiguration GetConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-        .AddSystemsManager("/catalogapi")
+        //.AddSystemsManager("/catalogapi")
         .AddEnvironmentVariables();
 
     var config = builder.Build();

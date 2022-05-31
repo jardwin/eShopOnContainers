@@ -51,6 +51,7 @@ IWebHost BuildWebHost(IConfiguration configuration, string[] args) =>
         .UseStartup<Startup>()
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseSerilog()
+        .UseUrls("http://*:5105")
         .Build();
 
 Serilog.ILogger CreateSerilogLogger(IConfiguration configuration)
@@ -73,7 +74,7 @@ IConfiguration GetConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-        .AddSystemsManager("/identityapi")
+        //.AddSystemsManager("/identityapi")
         .AddEnvironmentVariables();
 
     var config = builder.Build();

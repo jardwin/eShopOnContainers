@@ -20,7 +20,7 @@ namespace OcelotApiGw
             IWebHostBuilder builder = WebHost.CreateDefaultBuilder(args);
             builder.ConfigureServices(s => s.AddSingleton(builder))
                 .ConfigureAppConfiguration(ic => ic.AddJsonFile("configuration.json")
-        .AddSystemsManager("/apigw")
+        //.AddSystemsManager("/apigw")
                 )
                 .UseStartup<Startup>()
                 .ConfigureLogging((hostingContext, loggingbuilder) =>
